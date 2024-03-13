@@ -1,0 +1,78 @@
+import discord
+from discord.ext import commands
+import os
+import random
+import requests
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'{bot.user} olarak giriş yaptık')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Merhaba! Ben {bot.user}, bir Discord sohbet botuyum!')
+
+@bot.command()
+async def cam(ctx):
+    await ctx.send("Cam Atıkların ve Maddelerin Doğada Yok Olma Süresi Hammaddesi toprak olduğu için bir cam şişenin doğada yok olma süresi en az 4000 yıldır.")
+
+@bot.command()
+async def poşet(ctx):
+    await ctx.send("Dünyada bir yılda 1 trilyon adet poşet kullanıldığı tahmin ediliyor, bu rakamın ülkemizde 30-35 milyar olduğu düşünülüyor.* Dünyada 1 dakikada 1 milyon pet şişenin satıldığı tahmin ediliyor.* Dünyada yılda 8 milyon ton plastiğin okyanuslara bırakıldığı tahmin ediliyor.* Atık miktarını arttıran en önemli etkenlerden biri kullan-at şeklindeki tek kullanımlık ürünlerin tüketimidir.* Gelecek nesiller açısından önemli bir sorun olan doğal kaynakların yoğun tüketiminin karşısında yapılacak en önemli eylem geri dönüşümdür.*")
+
+@bot.command()
+async def kağıt(ctx):
+    await ctx.send("Kağıt: Kağıt ürünlerinin yok olma süresi, kağıdın kalınlığına, kaplama malzemelerine ve çevresel koşullara bağlı olarak değişir. Örneğin, gazete kağıdı genellikle 2 ila 5 ay arasında yok olabilirken, karton gibi daha kalın kağıt ürünleri daha uzun sürebilir (birkaç yıl). ")
+
+@bot.command()
+async def çöp(ctx):
+    await ctx.send("Çöp sahalarına giden atıklar ise evsel atık, tıbbi atık, tehlikeli atık vb. gibi bölümlere ayrılarak düzenli olarak depolanıyor veya imha ediliyor. Düzenli depolamada ise çöpler açılan derin çukurlara gömülerek toprağa sızmasını önlemek için yalıtımlı bir malzeme ile kaplanarak kapatılır. ")
+
+@bot.command()
+async def plastik(ctx):
+    await ctx.send("Plastik: Plastiklerin yok olma süresi, türüne bağlı olarak büyük ölçüde değişir. Bazı plastik türleri yüzlerce hatta binlerce yıl boyunca doğada kalabilir. ")
+
+@bot.command()
+async def organik_atık(ctx):
+    await ctx.send("Organik Atıklar (yiyecek artıkları, kağıt, ahşap): Organik atıklar, kompostlama veya doğal çürüme sürecinde yok olabilir. Bu süreler genellikle birkaç haftadan birkaç yıla kadar değişebilir. ")
+
+@bot.command()
+async def metal(ctx):
+    await ctx.send("Metal: Metal atıklarının yok olma süresi, türüne ve çevresel koşullara bağlı olarak değişir. Örneğin, alüminyum kutuların yok olma süresi uzun olabilir, ancak geri dönüşüm yoluyla kullanım ömürleri uzatılabilir.Bu süreler, atıkların doğada ne kadar süreyle kalabileceğini gösterir, ancak gerçek süreler koşullara ve atığın türüne bağlı ")
+
+@bot.command()
+async def geridonusum(ctx):
+    await ctx.send("En düşük ülkeler ise yüzde 3 ile Sırbistan ve yüzde 5,2 ile Romanya'da. Geri dönüşüm oranı Fransa'da yüzde 54,2; Almanya'da ise yüzde 44,Almanya, 2016'dan beri dünyanın en büyük geri dönüşüm ülkesidir,Türkiye'de 2020 yılında belediye atığı geri dönüşüm oranı yüzde 12,3 oldu. Ve Son Olarak Türkiye'de geri dönüşüm ne kadar?  yüzde 30. ")
+
+@bot.command()
+async def geridonusum2(ctx):
+    await ctx.send("Paket servis kahve bardakları (karton bardaklar) ... Ambalaj kağıtları ...Tek kullanımlık bebek bezleri. ...Bitkisel ve hayvansal atıklar. ...Strafor köpük. ...6. Şırıngalar veya tıbbi atık. ...7. Yapışkan bant. ...8. Çeşitli cam ürünler.Ve Bunların Hepsinin geri dönüşümü yok!")
+
+@bot.command()
+async def geridonusum3(ctx):
+    await ctx.send("Türkiyede geri dönüşüm neden az? ülkemizde hem yeterli çevre bilincinin olmayışı hem de çevre politikalarının geri dönüşüm konusunda yetersiz kalmasından bahsedilebilir.")
+
+@bot.command()
+async def geridonusum4(ctx):
+    await ctx.send("Türkiyede kaç tane geri dönüşüm fabrikası var? Cevap : 2.223 (İki Bin İki yüz Yirmi Üç.) ")
+
+@bot.command()
+async def atıküretimiazaltma(ctx):
+    await ctx.send("1. Ambalajlı Ürünlerden Kaçının: Mümkünse, az ambalajlı veya ambalajsız ürünleri tercih edin. Bu şekilde ambalaj atıklarını azaltabilirsiniz.2. Tekrar Kullanım: Eşyaları tekrar kullanarak atık üretimini azaltın. Örneğin, su şişelerini tekrar doldurun, alışveriş poşetleri kullanmayın ve çantalarınızda kumaş alışveriş torbaları bulundurun.3. Geri Dönüşüm: Geri dönüşüm kutularını kullanarak kağıt, plastik, cam ve metal gibi malzemeleri geri dönüşüme gönderin.4. Gıda Atıklarını Azaltın: Gıda israfını önlemek için alışveriş yaparken dikkatli olun, yemekleri planlayın ve artıkları kompost yaparak değerlendirin.5. Dijital Belgeleme: Kağıt tüketimini azaltmak için dijital belgeler kullanın ve gereksiz yazılı kağıt belgeleri kaçının.6. Onarım ve Bakım: Eşyalarınızı tamir etmek veya bakım yapmak suretiyle daha uzun süre kullanmalarını sağlayın, böylece daha az atık üretilir.")
+
+@bot.command()
+async def birtonkağıtnekazandırır(ctx):
+    await ctx.send("77 Kg Sera Gazı | 4100 kWh Enerji.%40 Enerji Tasarrufu. | 17 Adet Kurtarılan Ağaç | 2.5m3 m3 Depolama Alanı Kazancı | 800 Kg Ham Madde Tasarrufu.")    
+
+@bot.command()
+async def demirnekadarzamandayokolur(ctx):
+    await ctx.send("10 ila 100 yıl")
+
+@bot.command()
+async def betonnekadarzamandaçürür(ctx):
+    await ctx.send("50 İla 60 Yıl Arası ") 
+
+bot.run("")
